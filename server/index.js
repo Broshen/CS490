@@ -3,6 +3,7 @@ const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+const path = require('path');
 
 // local imports
 var consultants = require('./mock_consultants');
@@ -49,6 +50,18 @@ router.get('/suggested_consultants/:projectId', (req, res) => {
 
 // append /api for our http requests
 app.use('/api', router);
+
+// serve frontend static build files from react app
+console.log("dirname: ", __dirname)
+app.use(express.static(path.join(__dirname, '/../client/build')));
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+	console.log(path.join(__dirname+'/../client/build/index.html'))
+  res.sendFile(path.join(__dirname+'/../client/build/index.html'));
+});
+
 
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
