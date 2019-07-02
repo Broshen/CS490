@@ -9,7 +9,7 @@ var consultants = require('./mock_consultants');
 var projects = require('./mock_projects');
 var algorithm = require('./matching_algorithm');
 
-const API_PORT = 5000;
+const API_PORT = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
 const router = express.Router();
