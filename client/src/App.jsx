@@ -11,13 +11,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/suggested_consultants/00001')
+    fetch('http://localhost:5000/api/suggested_consultants/00001')
       .then((data) => data.json())
       .then((res) => {
         this.setState({ consultants: res }) 
       });
 
-    fetch('http://localhost:3001/api/project/00001')
+    fetch('http://localhost:5000/api/project/00001')
       .then((data) => data.json())
       .then((res) => {
         this.setState({ project: res }) 
