@@ -9,7 +9,7 @@ var consultants = require('./mock_consultants');
 var projects = require('./mock_projects');
 var algorithm = require('./matching_algorithm');
 
-const API_PORT = 3001;
+const API_PORT = 3001 || 5000;
 const app = express();
 app.use(cors());
 const router = express.Router();
@@ -51,4 +51,4 @@ router.get('/suggested_consultants/:projectId', (req, res) => {
 app.use('/api', router);
 
 // launch our backend into a port
-app.listen(API_PORT || 5000, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
