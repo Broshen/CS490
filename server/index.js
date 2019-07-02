@@ -1,7 +1,13 @@
+// package imports
 const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+
+// local imports
+var consultants = require('./mock_consultants');
+var projects = require('./mock_projects');
+var algorithm = require('./matching_algorithm');
 
 const API_PORT = 3001;
 const app = express();
@@ -14,60 +20,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
-// this is our get method
-// this method fetches all available data in our database
-router.get('/getData', (req, res) => {
 
-  return res.json(
-  {
-    name: "farts"
-  })
-  Data.find((err, data) => {
-    if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true, data: data });
-  });
+// this endpoint returns the project with that has the specified
+// projectId, or null if no project is found
+router.get('/project/:projectId', (req, res) => {
+  console.log("project",  projects.getProject(req.params.projectId))
+  return res.json(projects.getProject(req.params.projectId))
 });
 
-// // this is our update method
-// // this method overwrites existing data in our database
-// router.post('/updateData', (req, res) => {
-//   const { id, update } = req.body;
-//   Data.findByIdAndUpdate(id, update, (err) => {
-//     if (err) return res.json({ success: false, error: err });
-//     return res.json({ success: true });
-//   });
-// });
 
-// // this is our delete method
-// // this method removes existing data in our database
-// router.delete('/deleteData', (req, res) => {
-//   const { id } = req.body;
-//   Data.findByIdAndRemove(id, (err) => {
-//     if (err) return res.send(err);
-//     return res.json({ success: true });
-//   });
-// });
+// this endpoint returns all the possible consultants that
+// are qualified for, and can be matched with the project
+// with id <projectId>
+router.get('/suggested_consultants/:projectId', (req, res) => {
 
-// // this is our create methid
-// // this method adds new data in our database
-// router.post('/putData', (req, res) => {
-//   let data = new Data();
+  // fetch the data for the project with id <projectId>
+  var project = projects.getProject(req.params.projectId)
 
-//   const { id, message } = req.body;
+  // get all consultants available
+  var allConsultants = consultants.getAllConsultants()
 
-//   if ((!id && id !== 0) || !message) {
-//     return res.json({
-//       success: false,
-//       error: 'INVALID INPUTS',
-//     });
-//   }
-//   data.message = message;
-//   data.id = id;
-//   data.save((err) => {
-//     if (err) return res.json({ success: false, error: err });
-//     return res.json({ success: true });
-//   });
-// });
+  // return a list of possible candidates
+  var matchedConsultants = algorithm.getConsultants(project, allConsultants)
+  return res.json(matchedConsultants)
+});
+
+
 
 // append /api for our http requests
 app.use('/api', router);

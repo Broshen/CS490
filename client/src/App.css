@@ -1,16 +1,29 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  list-style: none;
   background-color: #282c34;
+}
+
+@media (min-width: 700px) {
+  .Column{
+    width: 50% !important;
+  }
+
+  .Project {
+    position: fixed !important;
+    width: 50% !important;
+  }
+}
+
+.Column {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,15 +32,22 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Consultant {
+  margin: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Consultant div {
+  margin: 10px;
+}
+
+.Project {
+  position: absolute;
+  width: 100%;
+}
+.Project h3 {
+  margin: 0px;
+  padding: 0px;
+}
+.Project div {
+  margin: 10px;
 }
