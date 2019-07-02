@@ -51,4 +51,4 @@ router.get('/suggested_consultants/:projectId', (req, res) => {
 app.use('/api', router);
 
 // launch our backend into a port
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+app.listen(API_PORT || 5000, () => console.log(`LISTENING ON PORT ${API_PORT}`));
