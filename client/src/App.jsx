@@ -1,45 +1,29 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import './App.css';
 import ConsultantList from './ConsultantList';
 import ProjectDetails from './ProjectDetails';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import home from './home'
+import main from './main';
+//import form from './form';
 
 class App extends Component {
 
-  state = {
-    consultants: [],
-    project: null,
-  }
-
-  componentDidMount() {
-    fetch('/api/suggested_consultants/00001')
-      .then((data) => data.json())
-      .then((res) => {
-        this.setState({ consultants: res }) 
-      });
-
-    fetch('/api/project/00001')
-      .then((data) => data.json())
-      .then((res) => {
-        this.setState({ project: res }) 
-      });
-  }
 
   render() {
     return (
-      <div className="App">
-        <div className="Column">
-          <h3> Available Consultants: </h3>
-          <ConsultantList
-            consultants={this.state.consultants}
-          />
-        </div>
-        <div className="Column">
-          <ProjectDetails 
-            project={this.state.project}
-          />
-        </div>
-      </div>
+      
+     <Router>
+       <div>
+         <Route exact path="/" component={home} />
+         <Route path="/main" component={main} />
+        
+       </div>
+     </Router>
+
     );
+    
   }
 }
 

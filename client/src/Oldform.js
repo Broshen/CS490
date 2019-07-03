@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap';
 
 
-export const form = () =>(
+export const Oldform = () =>(
     <Form>
         <Form.Row>
             <Col>
