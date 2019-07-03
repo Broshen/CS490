@@ -1,0 +1,77 @@
+.card {
+    margin-bottom: 30px;
+    color: black;
+}
+
+.card-thumbnail {
+    padding: 4px;
+    display: inline-block;
+}
+.row {
+    width: 100%;
+    margin: 0 auto;
+}
+.card-content-wrapper {
+    padding: 16px;
+    display: inline-block;
+}
+
+.card-content {
+    width: 450px;
+    height: 176px;
+}
+
+.card-content-info {
+    display: block;
+    width: 100%;
+    height: 156px;
+    text-align: left;
+}
+
+.card-content-info-title {
+    color: rgb(118, 118, 118) ;
+    overflow-wrap: break-word ;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif ;
+    font-size: 12px ;
+    font-weight: 800 ;
+    margin-bottom: 4px;
+}
+
+.card-content-info-name {
+    overflow-wrap: break-word ;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif ;
+    font-size: 18px ;
+    font-weight: 600 ;
+    color: rgb(72, 72, 72) ;
+    margin-bottom: 4px;
+}
+
+.card-content-info-details {
+    overflow-wrap: break-word ;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif ;
+    font-size: 14px ;
+    font-weight: 400;
+    color: rgb(72, 72, 72);
+    margin-bottom: 4px;
+}
+
+.card-content-info-relevance {
+    overflow-wrap: break-word;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif ;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(72, 72, 72);
+    margin-bottom: 4px;
+}
+
+.card-content-rate {
+    display: block;
+    height: 20px;
+    width: 100%;
+    text-align: right;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif ;
+    font-size: 16px ;
+    font-weight: 600 ;
+    line-height: 1.375em ;
+    color: rgb(72, 72, 72) ;
+}
