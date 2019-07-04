@@ -10,7 +10,6 @@ import main from './main';
 
 class App extends Component {
 
-
   render() {
     return (
       
