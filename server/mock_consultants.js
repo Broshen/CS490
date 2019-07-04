@@ -46,7 +46,6 @@ module.exports = {
 			8.4,
 			"Hi, my name is Billy Talent! I specialize in the Healthcare industry, specifically in dealing with specialized medical equipment and medicine.",
 			null
-
 		),
     new Consultant("Max W.",
       "SENIOR CONSULTANT",
@@ -76,6 +75,35 @@ module.exports = {
       "Hi, my name is Danielle Vio! My experiences lie mostly with low income planning assistance and charity event planning",
       null
     ),
+		new Consultant("Nick C.",
+            "JUNIOR CONSULTANT",
+            "https://www.goldenglobes.com/sites/default/files/styles/portrait_medium/public/people/cover_images/20090307_015.jpg",
+            ["Ottawa, ON, Canada", ],
+            ["Animal Care"],
+            [["01/01/2020", "01/04/2020"], ["01/06/2020", "31/12/2020"]],
+            10000,
+            "week",
+            null,
+            ['00004','00000'],
+            4,
+            "Hi, my name is Nick! I specialize as a generalist in the animal care industry.",
+            null
+        ),
+        new Consultant("Sam D.",
+            "SENIOR CONSULTANT",
+            "https://24celebs.com/public/media/celebrity/2018/10/24/ebyjwjduvkmq-seth-rogen.jpg",
+            ["Sudbury, ON, Canada", ],
+            ["Automotive Repair"],
+            [["01/01/2020", "01/04/2020"], ["01/06/2020", "31/12/2020"]],
+            4000,
+            "week",
+            null,
+
+            ['00004','00000', '88888', '55667', '44233', '00023'],
+            4,
+            "Hi, my name is Sam! I represent automotive repair non-profits for a living..",
+            null
+        ),
 	]
 }
 }

@@ -7,8 +7,9 @@ class ConsultantList extends Component {
 
   render() {
     return this.props.consultants.map((consultant, i) =>
-      <CFCCard consultant={consultant}/>
+      <CFCCard consultant={consultant} rank={i+1}/>
     )
+
   }
 }
 

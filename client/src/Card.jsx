@@ -15,7 +15,12 @@ class CFCCard extends Component {
           variant="top"
           src={this.props.consultant.thumbnail? this.props.consultant.thumbnail: "http://fill-image.jobs160.com/300x200"}
         />
+
+          <Card.Footer>
+              <span><b>Rank: </b>{this.props.rank}</span>
+          </Card.Footer>
         <Card.Body>
+
 
           <Card.Title>{this.props.consultant.name}</Card.Title>
                   <Card.Subtitle>{this.props.consultant.position ? this.props.consultant.position : "CONSULTANT"}</Card.Subtitle>
