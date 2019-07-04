@@ -10,15 +10,6 @@
   background-color: #282c34;
 }
 
-#left {
-  float: left;
-  width: 50%;
-  background: red;
-  height: 100%;
-  overflow: hidden;
-}
-
-
 .Consultant {
   margin: 20px;
 }
