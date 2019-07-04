@@ -25,13 +25,14 @@ class main extends Component {
         fetch('/api/projects/unassigned')
             .then((data) => data.json())
             .then((res) => {
-                this.setState({projects: res, project: res['00001']})
+                this.setState({projects: res, project: res[this.props.match.params.projectId]})
             });
     }
 
 
     setProject = (project) => {
         this.setState({project: project});
+        window.history.pushState({},null,project.id)
 
         fetch(`/api/suggested_consultants/${project.id}`)
             .then((data) => data.json())
