@@ -21,6 +21,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
+router.get('/projects', (req, res) => {
+    return res.json(projects.getAllProjects())
+});
+
 
 // this endpoint returns the project with that has the specified
 // projectId, or null if no project is found
@@ -40,6 +44,8 @@ router.get('/suggested_consultants/:projectId', (req, res) => {
 
   // get all consultants available
   var allConsultants = consultants.getAllConsultants()
+
+    console.log('matching')
 
   // return a list of possible candidates
   var matchedConsultants = algorithm.getConsultants(project, allConsultants)
