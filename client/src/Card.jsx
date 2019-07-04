@@ -11,8 +11,10 @@ class CFCCard extends Component {
     return (
       <Card className="card">
         <div className="row">
-          <div className="card-thumbnail">
-            <img src={this.props.consultant.thumbnail? this.props.consultant.thumbnail: "http://fill-image.jobs160.com/300x200"}/>
+          <div className="card-thumbnail-wrapper">
+            <div className="card-thumbnail"
+                 style={{"background-image": `url(${this.props.consultant.thumbnail? this.props.consultant.thumbnail: "http://fill-image.jobs160.com/300x200"})`}}>
+            </div>
           </div>
           <div className="card-content-wrapper">
             <div className="card-content">
