@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './card.css';
-import {Card, Button} from 'react-bootstrap';
-
+import {Card, Button, Col, Row, Modal} from 'react-bootstrap';
 
 
 class CFCCard extends Component {
 
 
   render() {
+
     return (
       <Card className="card">
         <div className="row">
@@ -30,9 +30,9 @@ class CFCCard extends Component {
                     <span>Rating: </span> {this.props.consultant.avg_rating}/10
                   </div>
                 </div>
-                <div className="card-content-rate">
-                  <span>${this.props.consultant.pay_amount} CAD/{this.props.consultant.pay_frequency}</span>
-                </div>
+                    <div className="card-content-rate">
+                      <span>${this.props.consultant.pay_amount} CAD/{this.props.consultant.pay_frequency}</span>
+                    </div>
               </span>
             </div>
           </div>

@@ -11,18 +11,16 @@ export default class home extends Component {
     render(){
         return(
             <Container>
-              <Nav defaultActiveKey="/" as="ul">
-                <Nav.Item as="li">
-                  <Nav.Link href="/">Home</Nav.Link>
-                </Nav.Item>
-                <Nav.Item as="li">
-                <Nav.Link  href="/main" eventKey="link-1">Main</Nav.Link>
-                </Nav.Item>
-                <Nav.Item as="li">
-                  <Nav.Link href="/form" eventKey="link-2">Form</Nav.Link>
-                </Nav.Item>
-              </Nav>
-                <Jumbotron>
+              <nav class="navbar navbar-expand-lg navbar-light   fixed-to">
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-item nav-link active text-primary" href="/">Home</a>
+                  <a class="nav-item nav-link active text-primary" href="/main">Main</a>
+                  <a class="nav-item nav-link active text-primary" href="/form">Form</a>
+                </div>
+                </div>
+              </nav>
+               <Jumbotron>
                     <h2>Welcome to Project-Consultants Matching Process</h2>
                     <p>This is a website helping managers to assign the most suitable consultants to the client.</p>
                 </Jumbotron>
