@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Row, Col, Button, Container, Nav, Jumbotron } from 'react-bootstrap';
-import './form.css';
 
+const axios = require('axios');
 
 export default class form extends Component {
   constructor() {
@@ -24,8 +24,29 @@ export default class form extends Component {
  
   handleSubmit(event) {
     event.preventDefault();
+    console.log(event.target.elements.projectName.value)
     const data = new FormData(event.target); //form data is here, I don't really know how to pass this to the matching algorithm
-    this.props.history.push('/main/00000'); //cheat a little here. Once click run button, it will automatically redirect to main page
+    console.log(data)
+
+    var browser = this;
+
+    axios.post("api/project/new", {
+      name: event.target.elements.projectName.value,
+      locations: [event.target.elements.formGridCity.value + ", " + event.target.elements.formGridState.value + ", Canada"],
+      start_date: event.target.elements.startDate.value,
+      deadline: event.target.elements.endDate.value,
+      hours_required: event.target.elements.hours.value,
+      budget: event.target.elements.budget.value,
+      industries: [event.target.elements.industry.value],
+      qual_required: event.target.elements.clientQualification.value,
+      rfp_document: event.target.elements.projectDesc.value,
+      client: event.target.elements.clientName.value,
+      priority: event.target.elements.priority.value
+    }).then(function(response) {
+      browser.props.history.push('/main/' + response.data.projectId);
+    }).catch(function(error) {
+      console.log(error)
+    })
   }
  
 
@@ -33,58 +54,54 @@ export default class form extends Component {
     return (
       <Container>
        
-        <nav class="navbar navbar-expand-lg navbar-light  ">
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link active text-primary" href="/">Home</a>
-              <a class="nav-item nav-link active text-primary" href="/form">Form</a>
+        <nav className="navbar navbar-expand-lg navbar-light  ">
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav">
+              <a className="nav-item nav-link active text-primary" href="/">Home</a>
+              <a className="nav-item nav-link active text-primary" href="/form">Form</a>
             </div>
           </div>
         </nav>
 
       
       <Form onSubmit={this.handleSubmit} className="bg-light">
-        <h2 class="p-3 mb-2 bg-secondary text-white">Form</h2>
+        <h2 className="p-3 mb-2 bg-secondary text-white">Form</h2>
         <Form.Row >
           <Col>
-          <Form.Group controlId="firstName">
-              <Form.Label>Manager's First Name</Form.Label>
-              <Form.Control name="firstname" type="text" placeholder="Manager's First Name" />
+          <Form.Group as={Col} controlId="projectName">
+              <Form.Label>Project Name</Form.Label>
+              <Form.Control required name="projectName" type="text" placeholder="Project Name" />
           </Form.Group>
           </Col>
           <Col>
-          <Form.Group controlId="LastName">
-              <Form.Label>Manager's Last Name</Form.Label>
-              <Form.Control name="lastname" type="text" placeholder="Manager's Last Name" />
-          </Form.Group>
-          </Col>
-          <Col>
-          <Form.Group controlId="empId">
-              <Form.Label>Employee ID</Form.Label>
-              <Form.Control name="empId" type="number" placeholder="Emloyee ID" />
+          <Form.Group as={Col} controlId="clientName">
+              <Form.Label>Client Name</Form.Label>
+              <Form.Control required name="clientName" type="text" placeholder="Client Name" />
           </Form.Group>
           </Col>
       </Form.Row>
 
       <Form.Row>
         <Col>
-          <Form.Label>Select Project</Form.Label>
-            <Form.Control as="select">
-                <option>Choose...</option>
-                <option>{this.state.project.id} - {this.state.project.name}</option>
-          </Form.Control>
+
+          <Form.Group as={Col} controlId="projectDesc">
+          <Form.Label>Project Description</Form.Label>
+          <Form.Control required as="textarea" rows="3" />
+          </Form.Group>
         </Col>
       </Form.Row>
 
       <Form.Row>
+        <Col>
           <Form.Group as={Col} controlId="formGridCity">
               <Form.Label>City</Form.Label>
-              <Form.Control name="city"/>
+              <Form.Control required name="city"/>
           </Form.Group>
+        </Col>
+        <Col>
           <Form.Group as={Col} controlId="formGridState">
               <Form.Label>Province</Form.Label>
-              <Form.Control name="prov" as="select">
-                  <option>Choose...</option>
+              <Form.Control required name="prov" as="select">
                   <option>ON</option>
                   <option>QC</option>
                   <option>BC</option>
@@ -93,47 +110,45 @@ export default class form extends Component {
                   <option>NS</option>
               </Form.Control>
           </Form.Group>
+
+        </Col>
       </Form.Row>
 
       <Form.Row>
           <Col>
-          <Form.Group controlId="startDate">
+          <Form.Group as={Col} controlId="startDate">
               <Form.Label>Expeted Start Date</Form.Label>
-              <Form.Control name="startDate" type="date" />
+              <Form.Control required name="startDate" type="date" />
           </Form.Group>
           </Col>
           <Col>
-          <Form.Group controlId="endDate">
+          <Form.Group as={Col} controlId="endDate">
               <Form.Label>Expected End Date</Form.Label>
-              <Form.Control name="endDate" type="date" />
+              <Form.Control required name="endDate" type="date" />
           </Form.Group>
           </Col>
           <Col>
-              <Form.Group controlId="budget">
+              <Form.Group as={Col} controlId="hours">
                   <Form.Label>Estimated Required Hours</Form.Label>
-                  <Form.Control type="number" placeholder="Estimated required hours" />
+                  <Form.Control required type="number" placeholder="Estimated required hours" />
               </Form.Group>
           </Col>
       </Form.Row>
       <Form.Row>
           <Col>
               <Form.Group as={Col} controlId="priority">
-                  <Form.Label>Priority Level</Form.Label>
-                  <Form.Control name="priority" as="select">
-                      <option>Choose...</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
+                  <Form.Label>Priority</Form.Label>
+                  <Form.Control required name="priority" as="select">
+                      <option>Budget</option>
+                      <option>Location</option>
+                      <option>Quality</option>
                   </Form.Control>
               </Form.Group>
           </Col>
           <Col>
           <Form.Group as={Col} controlId="industry">
                   <Form.Label>Industry</Form.Label>
-                  <Form.Control as="select">
-                      <option>Choose...</option>
+                  <Form.Control required as="select">\
                       <option>Animals</option>
                       <option>Art and Cultures</option>
                       <option>Environment</option>
@@ -146,27 +161,26 @@ export default class form extends Component {
       </Form.Row>
       <Form.Row>
           <Col>
-              <Form.Group controlId="budget">
+              <Form.Group as={Col} controlId="budget">
                   <Form.Label>Estimated Budget</Form.Label>
-                  <Form.Control type="number" placeholder="Estimated Budget" />
+                  <Form.Control required type="number" placeholder="Estimated Budget" />
               </Form.Group>
           </Col>
           <Col>
           <Form.Group as={Col} controlId="clientQualification">
-                  <Form.Label>Client's Qualification</Form.Label>
-                  <Form.Control as="select">
-                  <option>Choose...</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                  </Form.Control>
-              </Form.Group>
+              <Form.Label>Required Consultant Qualifications</Form.Label>
+              <Form.Control as="textarea" rows="1"/>
+          </Form.Group>
           </Col>
       </Form.Row>
       
-      <Button variant="primary " type="submit">Run</Button>
+      <Form.Row>
+        <Col>
+          <Form.Group as={Col}>
+            <Button variant="primary " type="submit">Create Project</Button>
+          </Form.Group>
+        </Col>
+      </Form.Row>
 </Form>
 
 </Container>
@@ -174,11 +188,3 @@ export default class form extends Component {
   }
 }
 
-
-function stringifyFormData(fd) {
-  const data = {};
-	for (let key of fd.keys()) {
-  	data[key] = fd.get(key);
-  }
-  return JSON.stringify(data, null, 2);
-}

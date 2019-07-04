@@ -12,12 +12,8 @@ const PRIORITIES = {
 // to the project, and return the list
 function filterConsultantsForProject (project, consultants){
 	// TODO: actually implement this. return all consultants for now
-	console.log(project);
-	console.log(consultants);
-
 	switch(project.priority) {
 		case PRIORITIES.LOCATION:
-			console.log(project.location);
 			consultants = consultants.filter(consultant => consultant.locations.includes(project.locations[0]));
 			break;
 		case PRIORITIES.BUDGET:
