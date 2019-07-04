@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Row, Col, Button, Container, Nav } from 'react-bootstrap';
+import { Form, Row, Col, Button, Container, Nav, Jumbotron } from 'react-bootstrap';
 import './form.css';
 
 
@@ -32,21 +32,21 @@ export default class form extends Component {
   render(){
     return (
       <Container>
-        <Nav defaultActiveKey="/" as="ul">
-                <Nav.Item as="li">
-                  <Nav.Link href="/">Home</Nav.Link>
-                </Nav.Item>
-                <Nav.Item as="li">
-                <Nav.Link  href="/main" eventKey="link-1">Main</Nav.Link>
-                </Nav.Item>
-                <Nav.Item as="li">
-                  <Nav.Link href="/form" eventKey="link-2">Form</Nav.Link>
-                </Nav.Item>
-        </Nav>
-        
+       
+        <nav class="navbar navbar-expand-lg navbar-light  ">
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active text-primary" href="/">Home</a>
+              <a class="nav-item nav-link active text-primary" href="/main">Main</a>
+              <a class="nav-item nav-link active text-primary" href="/form">Form</a>
+            </div>
+          </div>
+        </nav>
+
       
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Row>
+      <Form onSubmit={this.handleSubmit} className="bg-light">
+        <h2 class="p-3 mb-2 bg-secondary text-white">Form</h2>
+        <Form.Row >
           <Col>
           <Form.Group controlId="firstName">
               <Form.Label>Manager's First Name</Form.Label>
@@ -68,13 +68,16 @@ export default class form extends Component {
       </Form.Row>
 
       <Form.Row>
-          <Col>
+        <Col>
           <Form.Label>Select Project</Form.Label>
             <Form.Control as="select">
                 <option>Choose...</option>
                 <option>{this.state.project.id} - {this.state.project.name}</option>
           </Form.Control>
-          </Col>
+        </Col>
+      </Form.Row>
+
+      <Form.Row>
           <Form.Group as={Col} controlId="formGridCity">
               <Form.Label>City</Form.Label>
               <Form.Control name="city"/>
@@ -105,6 +108,12 @@ export default class form extends Component {
               <Form.Label>Expected End Date</Form.Label>
               <Form.Control name="endDate" type="date" />
           </Form.Group>
+          </Col>
+          <Col>
+              <Form.Group controlId="budget">
+                  <Form.Label>Estimated Required Hours</Form.Label>
+                  <Form.Control type="number" placeholder="Estimated required hours" />
+              </Form.Group>
           </Col>
       </Form.Row>
       <Form.Row>
@@ -158,7 +167,7 @@ export default class form extends Component {
           </Col>
       </Form.Row>
       
-      <Button variant="primary" type="submit">Run</Button>
+      <Button variant="primary " type="submit">Run</Button>
 </Form>
 
 </Container>
