@@ -37,7 +37,6 @@ export default class form extends Component {
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-item nav-link active text-primary" href="/">Home</a>
-              <a class="nav-item nav-link active text-primary" href="/main">Main</a>
               <a class="nav-item nav-link active text-primary" href="/form">Form</a>
             </div>
           </div>
