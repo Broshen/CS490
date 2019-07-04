@@ -1,7 +1,8 @@
 const PRIORITIES = {
     BUDGET: 'Budget',
     LOCATION: 'Location',
-    QUALITY: 'Quality'
+    QUALITY: 'Quality',
+    EXPERIENCE: 'Experience'
 };
 
 // create a new mock Project object
@@ -125,7 +126,7 @@ const projects = {
         "To provide meals and other basic supplies to the homeless and other needy persons.",
         "Blue Door Soup Kitchns",
         null,
-        PRIORITIES.QUALITY
+        PRIORITIES.EXPERIENCE
     ),
     '00006': new Project(
         '00006',
@@ -149,9 +150,9 @@ module.exports = {
 		return projects[projectId]
 	},
 
-	getAllProjects: () => projects,
+	getAllProjects: () => projects, 
 
-    addProject: function (
+  addProject: function (
         name,
         locations,
         start_date,
@@ -185,5 +186,7 @@ module.exports = {
         projects[id] = newProj;
 
         return id;
-    }
+  },
+  
+  PRIORITIES
 }

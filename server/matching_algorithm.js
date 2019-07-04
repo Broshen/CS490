@@ -1,10 +1,4 @@
-// copy pasted from mock_projects.js because js imports are annoying, fix this later
-const PRIORITIES = {
-    BUDGET: 'Budget',
-    LOCATION: 'Location',
-    QUALITY: 'Quality'
-};
-
+const projects = require('./mock_projects.js');
 
 // given a project object (see mock_projects.js) and a list of
 // consultant objects (see mock_consultants.js), filter the list
@@ -13,18 +7,25 @@ const PRIORITIES = {
 function filterConsultantsForProject (project, consultants){
 	// TODO: actually implement this. return all consultants for now
 	switch(project.priority) {
-		case PRIORITIES.LOCATION:
+
+		case projects.PRIORITIES.LOCATION:
 			consultants = consultants.filter(consultant => consultant.locations.includes(project.locations[0]));
 			break;
-		case PRIORITIES.BUDGET:
+		case projects.PRIORITIES.BUDGET:
 			consultants = consultants.sort((a, b) => {
 				return a.pay_amount - b.pay_amount;
 			});
 			break;
-        case PRIORITIES.QUALITY:
+        case projects.PRIORITIES.QUALITY:
             consultants = consultants.sort((a, b) => {
                 return b.avg_rating - a.avg_rating;
             });
+            break;
+		case projects.PRIORITIES.EXPERIENCE:
+            consultants = consultants.sort((a, b) => {
+                return b.prev_jobs.length - a.prev_jobs.length;
+            });
+            break;
 	}
 	return consultants
 }
