@@ -44,6 +44,8 @@ router.get('/suggested_consultants/:projectId', (req, res) => {
   // get all consultants available
   var allConsultants = consultants.getAllConsultants()
 
+    console.log('matching')
+
   // return a list of possible candidates
   var matchedConsultants = algorithm.getConsultants(project, allConsultants)
   return res.json(matchedConsultants)

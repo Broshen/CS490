@@ -10,27 +10,14 @@
   background-color: #282c34;
 }
 
-@media (min-width: 700px) {
-  .Column{
-    width: 50% !important;
-  }
-
-  .Project {
-    position: fixed !important;
-    width: 50% !important;
-  }
+#left {
+  float: left;
+  width: 50%;
+  background: red;
+  height: 100%;
+  overflow: hidden;
 }
 
-.Column {
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .Consultant {
   margin: 20px;
@@ -41,10 +28,10 @@
 }
 
 .Project {
-  position: absolute;
   width: 100%;
   font-size: 2vw;
 }
+
 .Project h3 {
   margin: 0px;
   padding: 0px;

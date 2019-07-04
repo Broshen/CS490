@@ -4,6 +4,8 @@
 // to the project, and return the list
 function filterConsultantsForProject (project, consultants){
 	// TODO: actually implement this. return all consultants for now
+	console.log(project);
+	console.log(consultants);
 	return consultants
 }
 

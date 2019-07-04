@@ -135,7 +135,5 @@ module.exports = {
 		return projects[projectId]
 	},
 
-	getAllProjects: function (){
-		return projects
-	}
+	getAllProjects: () => projects
 }
