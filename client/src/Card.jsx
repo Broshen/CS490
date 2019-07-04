@@ -20,17 +20,18 @@ class CFCCard extends Component {
             <div className="card-content">
               <span className="row">
                 <div className="card-content-info">
-                  <div className="card-content-info-title">{this.props.consultant.position? this.props.consultant.position: "SENIOR CONSULTANT"}</div>
+                  <div className="card-content-info-title">{this.props.consultant.position? this.props.consultant.position: "CONSULTANT"}</div>
                   <div className="card-content-info-name">{this.props.consultant.name}</div>
                   <div className="card-content-info-details">
-                    17 Previous Projects{this.props.consultant.locations.map((location, i) => {return " · "+location})}
+                    {this.props.consultant.prev_jobs.length} Previous Project{this.props.consultant.prev_jobs.length === 1 ? '' : 's'}
+                    {this.props.consultant.locations.map((location, i) => {return " · "+location})}
                   </div>
                   <div className="card-content-info-relevance">
                     <span>Rating: </span> {this.props.consultant.avg_rating}/10
                   </div>
                 </div>
                 <div className="card-content-rate">
-                  <span>${this.props.consultant.pay_amount}/{this.props.consultant.pay_frequency}</span>
+                  <span>${this.props.consultant.pay_amount} CAD/{this.props.consultant.pay_frequency}</span>
                 </div>
               </span>
             </div>
