@@ -43,6 +43,7 @@
 .Project {
   position: absolute;
   width: 100%;
+  font-size: 2vw;
 }
 .Project h3 {
   margin: 0px;

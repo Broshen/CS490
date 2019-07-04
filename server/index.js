@@ -21,11 +21,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
+// this endpoint returns all unassigned projects
+router.get('/projects/unassigned', (req, res) => {
+  return res.json(projects.getAllProjects())
+});
 
 // this endpoint returns the project with that has the specified
 // projectId, or null if no project is found
 router.get('/project/:projectId', (req, res) => {
-  console.log("project",  projects.getProject(req.params.projectId))
   return res.json(projects.getProject(req.params.projectId))
 });
 

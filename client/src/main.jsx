@@ -14,13 +14,13 @@ class main extends Component {
     }
   
     componentDidMount() {
-      fetch('/api/suggested_consultants/00001')
+      fetch('/api/suggested_consultants/'+this.props.match.params.projectId)
         .then((data) => data.json())
         .then((res) => {
           this.setState({ consultants: res }) 
         });
   
-      fetch('/api/project/00001')
+      fetch('/api/project/'+this.props.match.params.projectId)
         .then((data) => data.json())
         .then((res) => {
           this.setState({ project: res }) 
@@ -29,19 +29,31 @@ class main extends Component {
   
     render() {
       return (
-        <div className="App">
-          <div className="Column">
+        <Container>
+          <nav className="navbar navbar-expand-lg navbar-light   fixed-to">
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="navbar-nav">
+                <a className="nav-item nav-link active text-primary" href="/">Home</a>
+                <a className="nav-item nav-link active text-primary" href="/form">New Project</a>
+              </div>
+            </div>
+          </nav>
+
+          <Row>
+            <Col sm={12} md={6}>
             <h3> Available Consultants: </h3>
             <ConsultantList
-              consultants={this.state.consultants}
+            consultants={this.state.consultants}
             />
-          </div>
-          <div className="Column">
+            </Col>
+
+            <Col sm={12} md={6}>
             <ProjectDetails 
-              project={this.state.project}
+            project={this.state.project}
             />
-          </div>
-        </div>
+            </Col>
+          </Row>
+        </Container>
       );
       
     }
