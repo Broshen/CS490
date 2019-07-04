@@ -46,6 +46,7 @@ module.exports = {
 			8.4,
 			"Hi, my name is Billy Talent! I specialize in the Healthcare industry, specifically in dealing with specialized medical equipment and medicine.",
 			null
+
 		),
     new Consultant("Max W.",
       "SENIOR CONSULTANT",
@@ -64,7 +65,7 @@ module.exports = {
     new Consultant("Danielle V.",
       "SENIOR CONSULTANT",
       "https://image.shutterstock.com/mosaic_250/166695862/1043077198/stock-photo-headshot-of-beautiful-smiling-woman-with-broad-smile-being-in-good-mood-as-poses-at-camera-1043077198.jpg",
-      ["Waterloo, ON, Canada", "Kitchener, ON, Canada", "Cambridge, ON, Canada"],
+      ["Ottawa, ON, Canada"],
       ["Low Income Assistance", "Food", "Event Planning"],
       [["01/10/2019", "06/13/2019"], ["07/10/2019", "01/03/2021"]],
       2400,
