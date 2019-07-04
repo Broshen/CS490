@@ -8,37 +8,36 @@ class CFCCard extends Component {
 
   render() {
 
+
     return (
       <Card className="card">
-        <div className="row">
-          <div className="card-thumbnail-wrapper">
-            <div className="card-thumbnail"
-                 style={{"background-image": `url(${this.props.consultant.thumbnail? this.props.consultant.thumbnail: "http://fill-image.jobs160.com/300x200"})`}}>
-            </div>
-          </div>
-          <div className="card-content-wrapper">
-            <div className="card-content">
-              <span className="row">
-                <div className="card-content-info">
-                  <div className="card-content-info-title">{this.props.consultant.position? this.props.consultant.position: "CONSULTANT"}</div>
-                  <div className="card-content-info-name">{this.props.consultant.name}</div>
-                  <div className="card-content-info-details">
-                    {this.props.consultant.prev_jobs.length} Previous Project{this.props.consultant.prev_jobs.length === 1 ? '' : 's'}
-                    {this.props.consultant.locations.map((location, i) => {return " · "+location})}
-                  </div>
-                  <div className="card-content-info-relevance">
+        <Card.Img
+          variant="top"
+          src={this.props.consultant.thumbnail? this.props.consultant.thumbnail: "http://fill-image.jobs160.com/300x200"}
+        />
+        <Card.Body>
+
+          <Card.Title>{this.props.consultant.name}</Card.Title>
+                  <Card.Subtitle>{this.props.consultant.position ? this.props.consultant.position : "CONSULTANT"}</Card.Subtitle>
+          <Card.Text>
+            {this.props.consultant.prev_jobs.length} Previous Project{this.props.consultant.prev_jobs.length === 1 ? '' : 's'}
+            {this.props.consultant.locations.map((location, i) => {return " · "+location})}
+          </Card.Text>
+                  <Card.Subtitle>
                     <span>Rating: </span> {this.props.consultant.avg_rating}/10
-                  </div>
-                </div>
-                    <div className="card-content-rate">
+                  </Card.Subtitle>
+
+           
+
+        </Card.Body>
+
+                 <Card.Footer>
                       <span>${this.props.consultant.pay_amount} CAD/{this.props.consultant.pay_frequency}</span>
-                    </div>
-              </span>
-            </div>
-          </div>
-        </div>
+                    </Card.Footer>
       </Card>
     )
   }
 }
+
+
 export default CFCCard
