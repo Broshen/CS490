@@ -145,10 +145,10 @@ const projects = {
 }
 
 module.exports = {
-    getProject: function (projectId) {
-        // TODO: use projectId to actually find a project with matching project ID
-        return projects[projectId]
-    },
-    getAllProjects: () => projects,
-    PRIORITIES
+	getProject: function (projectId) {
+		console.log(projects[projectId])
+		return projects[projectId]
+	},
+
+	getAllProjects: () => projects
 }

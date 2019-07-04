@@ -15,22 +15,24 @@ class main extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/suggested_consultants/00001')
-            .then((data) => data.json())
-            .then((res) => {
-                this.setState({consultants: res})
-            });
+      fetch('/api/suggested_consultants/'+this.props.match.params.projectId)
+        .then((data) => data.json())
+        .then((res) => {
+          this.setState({ consultants: res }) 
+        });
+ 
 
-        fetch('/api/projects')
+        fetch('/api/projects/unassigned')
             .then((data) => data.json())
             .then((res) => {
-                this.setState({projects: res, project: res['00001']})
+                this.setState({projects: res, project: res[this.props.match.params.projectId]})
             });
     }
 
 
     setProject = (project) => {
         this.setState({project: project});
+        window.history.pushState({},null,project.id)
 
         fetch(`/api/suggested_consultants/${project.id}`)
             .then((data) => data.json())
@@ -40,9 +42,19 @@ class main extends Component {
     }
 
     render() {
+
         return (
             <div>
                 <Container>
+                  
+          <nav className="navbar navbar-expand-lg navbar-light   fixed-to">
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="navbar-nav">
+                <a className="nav-item nav-link active text-primary" href="/">Home</a>
+                <a className="nav-item nav-link active text-primary" href="/form">New Project</a>
+              </div>
+            </div>
+          </nav>
                     <Row>
                         <Col>
                             <h3> Available Consultants: </h3>

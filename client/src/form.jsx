@@ -25,7 +25,7 @@ export default class form extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target); //form data is here, I don't really know how to pass this to the matching algorithm
-    this.props.history.push('/main'); //cheat a little here. Once click run button, it will automatically redirect to main page
+    this.props.history.push('/main/00000'); //cheat a little here. Once click run button, it will automatically redirect to main page
   }
  
 
@@ -37,7 +37,6 @@ export default class form extends Component {
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-item nav-link active text-primary" href="/">Home</a>
-              <a class="nav-item nav-link active text-primary" href="/main">Main</a>
               <a class="nav-item nav-link active text-primary" href="/form">Form</a>
             </div>
           </div>

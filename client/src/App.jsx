@@ -10,13 +10,12 @@ import form from './form';
 
 class App extends Component {
 
-
   render() {
     return (
      <Router>
        <div>
          <Route exact path="/" component={home} />
-         <Route path="/main" component={main} />
+         <Route path="/main/:projectId" component={main} />
          <Route path='/form' component={form} />
         </div>
      </Router>
