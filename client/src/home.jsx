@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Jumbotron, Grid, Row, Col, Image, Button, Container, Nav} from 'react-bootstrap';
+import { Jumbotron, Grid, Row, Col, Image, Button, Container, Nav, Breadcrumb, BreadcrumbItem} from 'react-bootstrap';
 import './home.css';
 import ConsultantList from './ConsultantList';
 import ProjectList from './ProjectList';
@@ -33,6 +33,9 @@ export default class home extends Component {
                 </div>
                 </div>
               </nav>
+              <Breadcrumb>
+                <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+              </Breadcrumb>
                <Jumbotron>
                     <h2>Welcome to Project-Consultants Matching Process</h2>
                     <p>This is a website helping managers to assign the most suitable consultants to the client.</p>
