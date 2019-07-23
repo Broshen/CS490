@@ -42,10 +42,7 @@ export default class form extends Component {
           </div>
         </nav>
 
-        <Breadcrumb>
-          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-          <Breadcrumb.Item href="/form" active>Form</Breadcrumb.Item>
-        </Breadcrumb>
+       
 
       <Form onSubmit={this.handleSubmit} className="bg-light">
         <h2 class="p-3 mb-2 bg-secondary text-white">Form</h2>

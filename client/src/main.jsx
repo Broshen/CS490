@@ -55,10 +55,7 @@ class main extends Component {
               </div>
             </div>
           </nav>
-          <Breadcrumb>
-          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-          <Breadcrumb.Item active>Project</Breadcrumb.Item>
-        </Breadcrumb>
+          
                     <Row>
                         <Col>
                             <h3> Available Consultants: </h3>

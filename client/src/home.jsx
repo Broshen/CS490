@@ -33,9 +33,7 @@ export default class home extends Component {
                 </div>
                 </div>
               </nav>
-              <Breadcrumb>
-                <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-              </Breadcrumb>
+              
                <Jumbotron>
                     <h2>Welcome to Project-Consultants Matching Process</h2>
                     <p>This is a website helping managers to assign the most suitable consultants to the client.</p>
