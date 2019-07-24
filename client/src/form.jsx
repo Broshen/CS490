@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Row, Col, Button, Container, Nav, Jumbotron, Breadcrumb, BreadcrumbItem } from 'react-bootstrap';
 import './form.css';
+import {Typeahead} from 'react-bootstrap-typeahead'; // ES2015
 
 
 export default class form extends Component {
@@ -80,7 +81,10 @@ export default class form extends Component {
       <Form.Row>
           <Form.Group as={Col} controlId="formGridCity">
               <Form.Label>City</Form.Label>
-              <Form.Control name="city"/>
+              <Typeahead labelKey="name"
+                options={['Airdrie', 'Armstrong','Barrie', 'Belleville', 'Brampton', 'Brantford', 'Brockville', 'Cambridge', 'Cornwall', 'Dryden', 'Guelph', 'Hamilton', 'Kingston', 'Kitchener', 'London', 'Markham', 'Mississauga', 'North Bay', 'Oshawa', 'Ottawa', 'Peterborough', 'Richmond Hill', 'Stratford', 'Thunder Bay', 'Toronto', 'Vaughan', 'Waterloo', 'Windsor', 'Woodstock']}
+                placeholder="Choose a city..."/>
+ 
           </Form.Group>
           <Form.Group as={Col} controlId="formGridState">
               <Form.Label>Province</Form.Label>
