@@ -19,7 +19,7 @@ export default class home extends Component {
           this.setState({ projects: Object.values(res) }) 
         });
     }
-  
+
     
     render(){
       console.log(this.state.projects)
@@ -28,7 +28,7 @@ export default class home extends Component {
               <nav className="navbar navbar-expand-lg navbar-light   fixed-to">
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                  <a className="nav-item nav-link active text-primary" href="/">Home</a>
+                  <a className="nav-item nav-link active text-primary" href="/home">Home</a>
                   <a className="nav-item nav-link active text-primary" href="/form">New Project</a>
                 </div>
                 </div>
@@ -45,6 +45,13 @@ export default class home extends Component {
                     <Link to="/form">
                         <Button variant="primary">Create a Project</Button>
                     </Link>
+
+
+                  <h5>My Google Maps Demo</h5>
+                  <div id="map"></div>
+                 
+    
+
 
                   </Col>
                   <Col xs={12} sm={4}>
