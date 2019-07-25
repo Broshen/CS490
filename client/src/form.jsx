@@ -145,7 +145,7 @@ export default class form extends Component {
           <Col>
           <Form.Group as={Col} controlId="industry">
                   <Form.Label>Industry</Form.Label>
-                  <Form.Control required as="select">\
+                  <Form.Control required as="select">
                       <option>Animals</option>
                       <option>Art and Cultures</option>
                       <option>Environment</option>
