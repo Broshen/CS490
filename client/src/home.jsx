@@ -21,13 +21,10 @@ export default class home extends Component {
         .then((res) => {
           this.setState({ projects: Object.values(res) }) 
         });
-
-
     }
 
     
     render(){
-      console.log(this.state.projects)
         return(
             <Container>
               <nav className="navbar navbar-expand-lg navbar-light   fixed-to" >

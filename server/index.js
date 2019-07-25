@@ -23,13 +23,17 @@ app.use(logger('dev'));
 
 // this endpoint returns all unassigned projects
 router.get('/projects/unassigned', (req, res) => {
-  return res.json(projects.getAllProjects())
+  projects.getAllProjects().then(r => {
+    return res.json(r)
+  });
 });
 
 // this endpoint returns the project with that has the specified
 // projectId, or null if no project is found
 router.get('/project/:projectId', (req, res) => {
-  return res.json(projects.getProject(req.params.projectId))
+  projects.getProject(req.params.projectId).then(r => {
+    return res.json(r)
+  });
 });
 
 
@@ -52,7 +56,6 @@ router.post('/project/new', (req, res) => {
   )
   return res.json({"projectId" : newProjId})
 });
-
 
 // this endpoint returns all the possible consultants that
 // are qualified for, and can be matched with the project

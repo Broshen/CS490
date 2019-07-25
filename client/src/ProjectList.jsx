@@ -7,29 +7,29 @@ import './ProjectList.css';
 class ProjectList extends Component {
 
   render() {
-  	console.log(this.props.projects)
-    return this.props.projects.map((project, i) =>
-      <Card key={i}>
+    return this.props.projects.map((project, i) =>{
+      if (typeof project.id === 'undefined'){
+        return
+      }
+
+      return <Card key={i}>
         <Card.Body>
-      		<Card.Title>{project.name} </Card.Title>
-
-      		<Card.Subtitle>  {project.client} </Card.Subtitle>
-
-      		{project.locations.map((location, j) => 
-      			<Card.Text>
-      				{location}
-      			</Card.Text>
-			)}
-			<Card.Text>
-  				{project.start_date} - {project.deadline}
-  			</Card.Text>
-
-  			<Card.Link id="link" href={"/main/"+project.id}>
-  				See candidate consultants
-  			</Card.Link>
-     	</Card.Body>
-      </Card>
-    )
+          <Card.Title>{project.name} </Card.Title>
+            <Card.Subtitle>  {project.client} </Card.Subtitle>
+              {project.locations.map((location, j) =>
+                <Card.Text>
+                  {location}
+                </Card.Text>
+          )}
+          <Card.Text>
+              {project.start_date} - {project.deadline}
+            </Card.Text>
+            <Card.Link id="link" href={"/main/"+project.id}>
+              See candidate consultants
+            </Card.Link>
+           </Card.Body>
+          </Card>
+      })
   }
 }
 
