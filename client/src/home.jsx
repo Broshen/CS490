@@ -29,11 +29,11 @@ export default class home extends Component {
       console.log(this.state.projects)
         return(
             <Container>
-              <nav className="navbar navbar-expand-lg navbar-light   fixed-to">
+              <nav className="navbar navbar-expand-lg navbar-light   fixed-to" >
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div className="navbar-nav">
-                  <a className="nav-item nav-link active text-primary" href="/home">Home</a>
-                  <a className="nav-item nav-link active text-primary" href="/form">New Project</a>
+                <div  className="navbar-nav">
+                  <a id="navbar" className="nav-item nav-link active " href="/home">Home</a>
+                  <a id="navbar" className="nav-item nav-link active" href="/form">New Project</a>
                 </div>
                 </div>
               </nav>
@@ -47,7 +47,7 @@ export default class home extends Component {
                     <h4> Create a new Project </h4>
 
                     <Link to="/form">
-                        <Button variant="primary">Create a Project</Button>
+                        <Button id="mainButton">Create a Project</Button>
                     </Link>
 
 

@@ -37,8 +37,8 @@ export default class form extends Component {
         <nav class="navbar navbar-expand-lg navbar-light  ">
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-item nav-link active text-primary" href="/home">Home</a>
-              <a class="nav-item nav-link active text-primary" href="/form">Form</a>
+              <a  id="navbar" class="nav-item nav-link active " href="/home">Home</a>
+              <a  id="navbar" class="nav-item nav-link active " href="/form">Form</a>
             </div>
           </div>
         </nav>
@@ -171,7 +171,7 @@ export default class form extends Component {
           </Col>
       </Form.Row>
       
-      <Button variant="primary " type="submit">Run</Button>
+      <Button id="mainButton" type="submit">Run</Button>
 </Form>
 
 </Container>
