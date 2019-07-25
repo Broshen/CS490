@@ -5,6 +5,8 @@ import './home.css';
 import ConsultantList from './ConsultantList';
 import ProjectList from './ProjectList';
 import ProjectDetails from './ProjectDetails';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import MapContainer from './MapContainer';
 
 export default class home extends Component {
     
@@ -18,6 +20,8 @@ export default class home extends Component {
         .then((res) => {
           this.setState({ projects: Object.values(res) }) 
         });
+
+
     }
 
     
@@ -47,12 +51,9 @@ export default class home extends Component {
                     </Link>
 
 
-                  <h5>My Google Maps Demo</h5>
-                  <div id="map"></div>
+                  <h5>Consultants Location</h5>
+                  <MapContainer />
                  
-    
-
-
                   </Col>
                   <Col xs={12} sm={4}>
                     <h4> Pickup from an exisiting project </h4>
@@ -92,3 +93,8 @@ export default class home extends Component {
         )
     }
 }
+
+
+GoogleApiWrapper({
+  apiKey: ("AIzaSyCttEUOwA9PcYztuBx_Hy6ErHbjlTd9vFk")
+})(home)

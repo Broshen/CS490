@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Row, Col, Button, Container, Nav, Jumbotron, Breadcrumb, BreadcrumbItem } from 'react-bootstrap';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+
+
+
 
 export default class login extends Component {
     constructor() {
@@ -43,7 +47,7 @@ export default class login extends Component {
             <Button variant="primary " type="submit" >Login</Button>
             </div>
            
-        </Form>
+        </Form> 
   
   </Container>
       )
