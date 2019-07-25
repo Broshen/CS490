@@ -15,17 +15,27 @@ function filterConsultantsForProject (project, consultants){
 			break;
 		case projects.PRIORITIES.BUDGET:
 			consultants = consultants.sort((a, b) => {
-				return a.pay_amount - b.pay_amount;
+				// Give high weighting to this
+				const standardizedPayRank = (a.pay_amount - b.pay_amount) * 1.5 /a.pay_amount;
+				const standardizedExperienceRank = (b.prev_jobs.length - a.prev_jobs.length) / b.prev_jobs.length;
+				const standardizedQualityRank = (b.avg_rating - a.avg_rating) / b.avg_rating;
+				return standardizedPayRank + standardizedExperienceRank + standardizedQualityRank;
 			});
 			break;
         case projects.PRIORITIES.QUALITY:
             consultants = consultants.sort((a, b) => {
-                return b.avg_rating - a.avg_rating;
+                const standardizedPayRank = (a.pay_amount - b.pay_amount) /a.pay_amount;
+                const standardizedExperienceRank = (b.prev_jobs.length - a.prev_jobs.length) / b.prev_jobs.length;
+                const standardizedQualityRank = (b.avg_rating - a.avg_rating) * 1.5 / b.avg_rating;
+                return standardizedPayRank + standardizedExperienceRank + standardizedQualityRank;
             });
             break;
 		case projects.PRIORITIES.EXPERIENCE:
             consultants = consultants.sort((a, b) => {
-                return b.prev_jobs.length - a.prev_jobs.length;
+                const standardizedPayRank = (a.pay_amount - b.pay_amount) /a.pay_amount;
+                const standardizedExperienceRank = (b.prev_jobs.length - a.prev_jobs.length) * 1.5 / b.prev_jobs.length;
+                const standardizedQualityRank = (b.avg_rating - a.avg_rating) / b.avg_rating;
+                return standardizedPayRank + standardizedExperienceRank + standardizedQualityRank;
             });
             break;
 	}
