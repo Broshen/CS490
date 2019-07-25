@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Jumbotron, Grid, Row, Col, Image, Button, Container, Nav} from 'react-bootstrap';
+import { Jumbotron, Grid, Row, Col, Image, Button, Container, Nav, Breadcrumb, BreadcrumbItem} from 'react-bootstrap';
+import './home.css';
+
 import ConsultantList from './ConsultantList';
 import ProjectList from './ProjectList';
 import ProjectDetails from './ProjectDetails';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import MapContainer from './MapContainer';
 
 export default class home extends Component {
     
@@ -17,21 +21,24 @@ export default class home extends Component {
         .then((res) => {
           this.setState({ projects: Object.values(res) }) 
         });
+
+
     }
-  
+
     
     render(){
       console.log(this.state.projects)
         return(
             <Container>
-              <nav className="navbar navbar-expand-lg navbar-light   fixed-to">
+              <nav className="navbar navbar-expand-lg navbar-light   fixed-to" >
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div className="navbar-nav">
-                  <a className="nav-item nav-link active text-primary" href="/">Home</a>
-                  <a className="nav-item nav-link active text-primary" href="/form">New Project</a>
+                <div  className="navbar-nav">
+                  <a id="navbar" className="nav-item nav-link active " href="/home">Home</a>
+                  <a id="navbar" className="nav-item nav-link active" href="/form">New Project</a>
                 </div>
                 </div>
               </nav>
+              
                <Jumbotron>
                     <h2>Welcome to Project-Consultants Matching Process</h2>
                     <p>This is a website helping managers to assign the most suitable consultants to the client.</p>
@@ -41,9 +48,13 @@ export default class home extends Component {
                     <h4> Create a new Project </h4>
 
                     <Link to="/form">
-                        <Button variant="primary">Create a Project</Button>
+                        <Button id="mainButton">Create a Project</Button>
                     </Link>
 
+
+                  <h5>Consultants Location</h5>
+                  <MapContainer />
+                 
                   </Col>
                   <Col xs={12} sm={4}>
                     <h4> Pickup from an exisiting project </h4>
@@ -83,3 +94,8 @@ export default class home extends Component {
         )
     }
 }
+
+
+GoogleApiWrapper({
+  apiKey: ("AIzaSyCttEUOwA9PcYztuBx_Hy6ErHbjlTd9vFk")
+})(home)

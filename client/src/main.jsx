@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Jumbotron, Grid, Row, Col, Image, Button, Container, Card, DropdownButton, Dropdown} from 'react-bootstrap';
+import {Jumbotron, Grid, Row, Col, Image, Button, Container, Card, DropdownButton, Dropdown, Breadcrumb, BreadcrumbItem} from 'react-bootstrap';
+
 import ConsultantList from './ConsultantList';
 import ProjectDetails from './ProjectDetails';
 
@@ -49,11 +50,12 @@ class main extends Component {
           <nav className="navbar navbar-expand-lg navbar-light   fixed-to">
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav">
-                <a className="nav-item nav-link active text-primary" href="/">Home</a>
-                <a className="nav-item nav-link active text-primary" href="/form">New Project</a>
+                <a id="navbar" className="nav-item nav-link active " href="/home">Home</a>
+                <a id="navbar" className="nav-item nav-link active " href="/form">New Project</a>
               </div>
             </div>
           </nav>
+          
                     <Row>
                         <Col>
                             <h3> Available Consultants: </h3>

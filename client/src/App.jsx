@@ -7,6 +7,9 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import home from './home';
 import main from './main';
 import form from './form';
+import login from './login';
+
+
 
 class App extends Component {
 
@@ -14,9 +17,12 @@ class App extends Component {
     return (
      <Router>
        <div>
-         <Route exact path="/" component={home} />
+         <Route exact path="/" component={login} />
+         <Route path='/home' component={home} />
          <Route path="/main/:projectId" component={main} />
          <Route path='/form' component={form} />
+         <Route path='/login' component={login} />
+        
         </div>
      </Router>
 

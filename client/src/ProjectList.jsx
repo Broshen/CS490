@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {Card, Button, ListGroup, ListGroupItem} from 'react-bootstrap';
 import CFCCard from './Card'
+import './ProjectList.css';
 
 class ProjectList extends Component {
 
@@ -23,7 +24,7 @@ class ProjectList extends Component {
   				{project.start_date} - {project.deadline}
   			</Card.Text>
 
-  			<Card.Link href={"/main/"+project.id}>
+  			<Card.Link id="link" href={"/main/"+project.id}>
   				See candidate consultants
   			</Card.Link>
      	</Card.Body>

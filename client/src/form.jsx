@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Row, Col, Button, Container, Nav, Jumbotron } from 'react-bootstrap';
+import { Form, Row, Col, Button, Container, Nav, Jumbotron, Breadcrumb, BreadcrumbItem } from 'react-bootstrap';
+import './form.css';
+import {Typeahead} from 'react-bootstrap-typeahead'; // ES2015
+
 
 const axios = require('axios');
 
@@ -8,31 +11,22 @@ export default class form extends Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      locations: "",
+    }
   }
 
-  state = {
-    project: [],
-  }
-  
-  componentDidMount() {
-    fetch('/api/project/00001')
-      .then((data) => data.json())
-      .then((res) => {
-        this.setState({ project: res }) 
-      });
+  handleAutoCompleteField(value) {
+    this.setState({locations: value[0]})
   }
  
   handleSubmit(event) {
     event.preventDefault();
-    console.log(event.target.elements.projectName.value)
-    const data = new FormData(event.target); //form data is here, I don't really know how to pass this to the matching algorithm
-    console.log(data)
-
     var browser = this;
 
     axios.post("api/project/new", {
       name: event.target.elements.projectName.value,
-      locations: [event.target.elements.formGridCity.value + ", " + event.target.elements.formGridState.value + ", Canada"],
+      locations: [this.state.locations + ", " + event.target.elements.formGridState.value + ", Canada"],
       start_date: event.target.elements.startDate.value,
       deadline: event.target.elements.endDate.value,
       hours_required: event.target.elements.hours.value,
@@ -53,17 +47,17 @@ export default class form extends Component {
   render(){
     return (
       <Container>
-       
         <nav className="navbar navbar-expand-lg navbar-light  ">
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-item nav-link active text-primary" href="/">Home</a>
+              <a className="nav-item nav-link active text-primary" href="/home">Home</a>
               <a className="nav-item nav-link active text-primary" href="/form">Form</a>
             </div>
           </div>
         </nav>
 
-      
+       
+
       <Form onSubmit={this.handleSubmit} className="bg-light">
         <h2 className="p-3 mb-2 bg-secondary text-white">Form</h2>
         <Form.Row >
@@ -95,7 +89,10 @@ export default class form extends Component {
         <Col>
           <Form.Group as={Col} controlId="formGridCity">
               <Form.Label>City</Form.Label>
-              <Form.Control required name="city"/>
+              <Typeahead labelKey="name"
+                options={['Airdrie', 'Armstrong','Barrie', 'Belleville', 'Brampton', 'Brantford', 'Brockville', 'Cambridge', 'Cornwall', 'Dryden', 'Guelph', 'Hamilton', 'Kingston', 'Kitchener', 'London', 'Markham', 'Mississauga', 'North Bay', 'Oshawa', 'Ottawa', 'Peterborough', 'Richmond Hill', 'Stratford', 'Thunder Bay', 'Toronto', 'Vaughan', 'Waterloo', 'Windsor', 'Woodstock']}
+                placeholder="Choose a city..."
+                onChange={this.handleAutoCompleteField.bind(this)}  />
           </Form.Group>
         </Col>
         <Col>
@@ -174,13 +171,8 @@ export default class form extends Component {
           </Col>
       </Form.Row>
       
-      <Form.Row>
-        <Col>
-          <Form.Group as={Col}>
-            <Button variant="primary " type="submit">Create Project</Button>
-          </Form.Group>
-        </Col>
-      </Form.Row>
+      <Button id="mainButton" type="submit">Create Project</Button>
+
 </Form>
 
 </Container>
