@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Jumbotron, Grid, Row, Col, Image, Button, Container, Nav, Breadcrumb, BreadcrumbItem} from 'react-bootstrap';
 import './home.css';
+
 import ConsultantList from './ConsultantList';
 import ProjectList from './ProjectList';
 import ProjectDetails from './ProjectDetails';

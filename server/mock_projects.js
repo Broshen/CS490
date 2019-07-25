@@ -147,9 +147,46 @@ const projects = {
 
 module.exports = {
 	getProject: function (projectId) {
-		console.log(projects[projectId])
 		return projects[projectId]
 	},
-	getAllProjects: () => projects,
-    PRIORITIES
+
+	getAllProjects: () => projects, 
+
+  addProject: function (
+        name,
+        locations,
+        start_date,
+        deadline,
+        hours_required,
+        budget,
+        industries,
+        qual_required,
+        rfp_document,
+        client,
+        assigned_consultant,
+        priority
+    ) {
+        var id = Object.keys(projects).length;
+        var newProj = new Project(
+            id,
+            name,
+            locations,
+            start_date,
+            deadline,
+            hours_required,
+            budget,
+            industries,
+            qual_required,
+            rfp_document,
+            client,
+            assigned_consultant,
+            priority
+        );
+
+        projects[id] = newProj;
+
+        return id;
+  },
+  
+  PRIORITIES
 }

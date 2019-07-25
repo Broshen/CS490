@@ -33,6 +33,27 @@ router.get('/project/:projectId', (req, res) => {
 });
 
 
+// this endpoint creates a new project, with the data
+// that is in the post body
+router.post('/project/new', (req, res) => {
+  var newProjId = projects.addProject(
+    req.body.name,
+    req.body.locations,
+    req.body.start_date,
+    req.body.deadline,
+    req.body.hours_required,
+    req.body.budget,
+    req.body.industries,
+    req.body.qual_required,
+    req.body.rfp_document,
+    req.body.client,
+    req.body.assigned_consultant,
+    req.body.priority
+  )
+  return res.json({"projectId" : newProjId})
+});
+
+
 // this endpoint returns all the possible consultants that
 // are qualified for, and can be matched with the project
 // with id <projectId>
@@ -43,8 +64,6 @@ router.get('/suggested_consultants/:projectId', (req, res) => {
 
   // get all consultants available
   var allConsultants = consultants.getAllConsultants()
-
-    console.log('matching')
 
   // return a list of possible candidates
   var matchedConsultants = algorithm.getConsultants(project, allConsultants)

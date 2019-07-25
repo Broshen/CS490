@@ -66,11 +66,11 @@ class main extends Component {
                         <Col>
                             <div><b>Select project</b></div>
                             <DropdownButton id="dropdown-basic-button"
-                                            title={this.state.project ? this.state.project.id : 'Select project'}>
+                                            title={this.state.project ? this.state.project.name : 'Select project'}>
                                 {
                                     this.state.projects && Object.keys(this.state.projects).map(id =>
                                         <Dropdown.Item
-                                            onClick={() => this.setProject(this.state.projects[id])}>{id}</Dropdown.Item>
+                                            onClick={() => this.setProject(this.state.projects[id])}>{this.state.projects[id].name}</Dropdown.Item>
                                     )
                                 }
                             </DropdownButton>
