@@ -9,7 +9,9 @@ function filterConsultantsForProject (project, consultants){
 	switch(project.priority) {
 
 		case projects.PRIORITIES.LOCATION:
-			consultants = consultants.filter(consultant => consultant.locations.includes(project.locations[0]));
+			consultants = consultants.sort((a,b) => {
+				return a.locations.includes(project.locations[0]) ? -1 : 1;
+            });
 			break;
 		case projects.PRIORITIES.BUDGET:
 			consultants = consultants.sort((a, b) => {
